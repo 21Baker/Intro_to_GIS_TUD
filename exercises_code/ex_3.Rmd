@@ -18,6 +18,7 @@ date: "2024-03-06"
 ```{r setup, include=FALSE}
 
 library(pacman)
+library(ggplot2)
 
 pacman::p_load(
   ggplot2,
