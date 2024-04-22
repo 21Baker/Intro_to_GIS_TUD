@@ -162,7 +162,7 @@ plot(point, col = "red", add = TRUE)
 
 ita_3 <- st_read(here("data","raw", "gadm41_ITA_shp", "gadm41_ITA_3.shp"))
 #ita_2 <- st_read(here("data","raw", "gadm41_ITA_shp", "gadm41_ITA_2.shp"))
-pop <- raster(here("data","raw","raster","sedac_pop_2000.TIFF"))
+pop <- raster(here("data","raw","sedac_pop_2000.TIFF"))
 ita_pop <- crop(pop,ita_3) 
 ita_pop_mask <- mask(ita_pop, ita_3)
 
@@ -394,8 +394,8 @@ We can do zonal operations using the zonal() function and we will see how it wor
 #from last lecture
 
 ita_2 <- st_read(here("data","raw", "gadm41_ITA_shp", "gadm41_ITA_2.shp"))
-night<- raster(here("data","tmp","night_light_world.tiff"))
-pop <- raster(here("data","raw","raster","sedac_pop_2000.TIFF"))
+night<- raster(here("data","raw", "NASAdata.nc"))
+pop <- raster(here("data","raw","sedac_pop_2000.TIFF"))
 
 ita_light <- crop(night,ita_2)   
 ita_pop <- crop(pop,ita_2) 
@@ -543,6 +543,8 @@ It seems that looking at all Italy the relationship is not strong, the correlati
 We could try to visualize it geographically by running a simple OLS regression for each NAME_2 unit and coloring the regions with the magnitude of the coefficient, you can try to do it as an exercise if you want.
 
 ```{r maptry}
+
+
 
 ```
 

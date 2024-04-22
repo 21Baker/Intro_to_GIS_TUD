@@ -458,7 +458,7 @@ We can also plot multiple objects in the same map in tmap in the same way that w
 ```{r multi}
 
 
-bavaria_crop <- crop(pop, bavaria)
+bavaria_crop <- as_Spatial(pop, bavaria)
 bavaria_pop <- mask(bavaria_crop, bavaria)
 
 bav <- tm_shape(bavaria_pop)+
@@ -599,7 +599,6 @@ deu_reshaped$month <- gsub("_rain", "", deu_reshaped$month)
 
 head(deu_reshaped)
 
-
 ## first we look at them as a grid 
 
 tm_shape(deu_reshaped) +
@@ -642,19 +641,6 @@ We can do interactive maps with tmap
 ```{r interactive}
 
 ## we can take the world map 
-
-world_map <- ne_states(returnclass = "sf")
-
-pop_values <- exact_extract(pop, world_map, fun = "mean")
-
-
-world_map$pop <- pop_values
-
-world_map <-st_make_valid(world_map)
-
-tmap_mode("view")
-tm_shape(world_map) + tm_polygons(col = "pop", midpoint = 0)
-
 ```
 
 tmap is using leaflet to produce interactive maps but if you are interested in interactive visualizations you should check out:
